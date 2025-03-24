@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安全知识主题演讲</title>
+    
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Preline UI -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline/dist/preline.min.css" />
+    
+    <!-- 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&family=Montserrat:wght@400;500;600;700&family=Fira+Code&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: "#f5e5ea",
+                            100: "#ebd1d9",
+                            200: "#ddbac5",
+                            300: "#cc98a8",
+                            400: "#b95f7b",
+                            500: "#a5405f",
+                            600: "#852d48",
+                            700: "#76233c",
+                            800: "#5d182d",
+                            900: "#3c101d"
+                        },
+                        secondary: {
+                            50: "#eed2ca",
+                            100: "#e4c0b6",
+                            200: "#d7ac9f",
+                            300: "#c78d7b",
+                            400: "#b35d43",
+                            500: "#934730",
+                            600: "#703320",
+                            700: "#5f2817",
+                            800: "#451b0e",
+                            900: "#230e07"
+                        },
+                        neutral: {
+                            50: "#ffffff",
+                            100: "#ffffff",
+                            200: "#ffffff",
+                            300: "#ffffff",
+                            400: "#f3f2f2",
+                            500: "#ddd5d5",
+                            600: "#c9b6b6",
+                            700: "#c2a3a3",
+                            800: "#b98989",
+                            900: "#aa6f6f"
+                        }
+                    },
+                    borderRadius: {
+                        DEFAULT: '2px',
+                    },
+                    typography: {
+                        DEFAULT: {
+                            css: {
+                                fontSize: '15px',
+                                lineHeight: 1.8,
+                            }
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Merriweather', 'Georgia', 'serif'],
+                        mono: ['Fira Code', 'monospace'],
+                        display: ['Montserrat', 'system-ui', 'sans-serif'],
+                        handwriting: ['Caveat', 'cursive'],
+                    }
+                }
+            }
+        };
+    </script>
+    
+    <style>
+        /* CSS变量 */
+        :root {
+            --color-primary-50: #f5e5ea;
+            --color-primary-100: #ebd1d9;
+            --color-primary-200: #ddbac5;
+            --color-primary-300: #cc98a8;
+            --color-primary-400: #b95f7b;
+            --color-primary-500: #a5405f;
+            --color-primary-600: #852d48;
+            --color-primary-700: #76233c;
+            --color-primary-800: #5d182d;
+            --color-primary-900: #3c101d;
+            
+            --color-secondary-50: #eed2ca;
+            --color-secondary-100: #e4c0b6;
+            --color-secondary-200: #d7ac9f;
+            --color-secondary-300: #c78d7b;
+            --color-secondary-400: #b35d43;
+            --color-secondary-500: #934730;
+            --color-secondary-600: #703320;
+            --color-secondary-700: #5f2817;
+            --color-secondary-800: #451b0e;
+            --color-secondary-900: #230e07;
+            
+            --color-neutral-50: #ffffff;
+            --color-neutral-100: #ffffff;
+            --color-neutral-200: #ffffff;
+            --color-neutral-300: #ffffff;
+            --color-neutral-400: #f3f2f2;
+            --color-neutral-500: #ddd5d5;
+            --color-neutral-600: #c9b6b6;
+            --color-neutral-700: #c2a3a3;
+            --color-neutral-800: #b98989;
+            --color-neutral-900: #aa6f6f;
+            
+            --font-family-heading: Merriweather, Georgia, serif;
+            --font-family-body: Merriweather, Georgia, serif;
+            --font-size-base: 15px;
+            --line-height: 1.8;
+            --heading-scale: 1.35;
+            --heading-weight: 700;
+            
+            --border-radius: 2px;
+            --shadow-level: 0;
+            --spacing-scale: 1.15;
+            --button-style: 2;
+            --animation-level: 1;
+        }
+        
+        .dark {
+            --bg-primary: #3c101d;
+            --text-primary: #f5e5ea;
+            --text-secondary: #ebd1d9;
+        }
+        
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #b95f7b;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a5405f;
+        }
+        
+        /* 页面切换动画 */
+        .slide {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 卡片悬停效果 */
+        .safety-card {
+            transition: all 0.3s ease;
+        }
+        
+        .safety-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* 按钮效果 */
+        .btn-hover {
+            transition: all 0.2s ease;
+        }
+        
+        .btn-hover:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 可视化页面设计 */
+        .presentation-slide {
+            min-height: calc(100vh - 120px);
+            display: none;
+        }
+        
+        .presentation-slide.active {
+            display: flex;
+        }
+        
+        /* 漂浮图标动画 */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* 闪烁动画 */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .blinking {
+            animation: blink 2s linear infinite;
+        }
+        
+        /* 旋转动画 */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .spinning {
+            animation: spin 10s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="font-serif bg-neutral-50 text-primary-900 dark:bg-primary-900 dark:text-neutral-50 transition-colors duration-300">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-neutral-50 dark:bg-primary-800 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-shield-alt text-primary-600 dark:text-primary-300 text-2xl"></i>
+                <h1 class="text-lg md:text-xl font-display font-bold text-primary-700 dark:text-primary-200">安全知识主题演讲</h1>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center">
+                    <span class="mr-2 text-sm hidden md:inline-block">幻灯片:</span>
+                    <span id="current-slide" class="mr-1 font-medium">1</span>
+                    <span>/</span>
+                    <span id="total-slides" class="ml-1">7</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <button id="prev-slide" class="p-1 rounded hover:bg-primary-100 dark:hover:bg-primary-700 transition-colors">
+                        <i class="fas fa-chevron-left text-primary-600 dark:text-primary-300"></i>
+                    </button>
+                    <button id="next-slide" class="p-1 rounded hover:bg-primary-100 dark:hover:bg-primary-700 transition-colors">
+                        <i class="fas fa-chevron-right text-primary-600 dark:text-primary-300"></i>
+                    </button>
+                </div>
+                
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-primary-100 dark:hover:bg-primary-700 transition-colors">
+                    <i class="fas fa-sun text-primary-600 dark:text-primary-300 dark:hidden"></i>
+                    <i class="fas fa-moon text-primary-300 hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="container mx-auto px-4 py-6">
+        <!-- 封面幻灯片 -->
+        <div id="slide-1" class="presentation-slide active flex flex-col items-center justify-center text-center">
+            <div class="max-w-4xl mx-auto slide active">
+                <div class="mb-6 relative">
+                    <i class="fas fa-shield-alt text-6xl md:text-8xl text-primary-500 dark:text-primary-300 floating"></i>
+                    <div class="absolute -top-2 -right-2 text-3xl md:text-4xl spinning">
+                        <i class="fas fa-check-circle text-secondary-400"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-display font-bold mb-4 text-primary-700 dark:text-primary-200">
+                    安全知识主题演讲
+                </h1>
+                <p class="text-xl md:text-2xl font-handwriting mb-8 text-secondary-600 dark:text-secondary-300">
+                    守护我们健康成长的盾牌
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-10 max-w-3xl mx-auto">
+                    <div class="safety-card bg-primary-50 dark:bg-primary-800 p-4 rounded-lg shadow-sm flex flex-col items-center">
+                        <i class="fas fa-traffic-light text-primary-600 dark:text-primary-300 text-3xl mb-2"></i>
+                        <p class="text-sm md:text-base font-medium">交通安全</p>
+                    </div>
+                    <div class="safety-card bg-primary-50 dark:bg-primary-800 p-4 rounded-lg shadow-sm flex flex-col items-center">
+                        <i class="fas fa-fire-extinguisher text-secondary-500 dark:text-secondary-300 text-3xl mb-2"></i>
+                        <p class="text-sm md:text-base font-medium">火灾安全</p>
+                    </div>
+                    <div class="safety-card bg-primary-50 dark:bg-primary-800 p-4 rounded-lg shadow-sm flex flex-col items-center">
+                        <i class="fas fa-user-shield text-primary-600 dark:text-primary-300 text-3xl mb-2"></i>
+                        <p class="text-sm md:text-base font-medium">个人安全</p>
+                    </div>
+                    <div class="safety-card bg-primary-50 dark:bg-primary-800 p-4 rounded-lg shadow-sm flex flex-col items-center">
+                        <i class="fas fa-laptop-medical text-secondary-500 dark:text-secondary-300 text-3xl mb-2"></i>
+                        <p class="text-sm md:text-base font-medium">急救知识</p>
+                    </div>
+                </div>
+                <div class="mt-10">
+                    <p class="italic text-primary-600 dark:text-primary-300">点击右箭头开始演示 →</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 交通安全幻灯片 -->
+        <div id="slide-2" class="presentation-slide flex flex-col items-center justify-center">
+            <div class="max-w-4xl mx-auto w-full slide">
+                <div class="flex flex-col md:flex-row md:items-center mb-8">
+                    <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
+                        <div class="relative">
+                            <div class="h-40 w-40 bg-primary-100 dark:bg-primary-700 rounded-full flex items-center justify-center">
+                                <i class="fas fa-traffic-light text-6xl text-primary-600 dark:text-primary-300 floating"></i>
+                            </div>
+                            <div class="absolute top-0 right-0">
+                                <div class="grid grid-cols-3 gap-1">
+                                    <div class="h-6 w-6 bg-red-500 rounded-full blinking"></div>
+                                    <div class="h-6 w-6 bg-yellow-500 rounded-full"></div>
+                                    <div class="h-6 w-6 bg-green-500 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h2 class="text-3xl font-display font-bold mb-3 text-primary-700 dark:text-primary-200">交通安全</h2>
+                        <p class="text-sm italic mb-3 text-secondary-600 dark:text-secondary-300">—— 胡双玥</p>
+                        <p class="mb-4 text-primary-800 dark:text-primary-100">
+                            安全不仅是一个词语，它是守护我们健康成长的盾牌，让我们远离伤害与危险。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-primary-800 p-6 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-primary-700 dark:text-primary-200">
+                        <i class="fas fa-road mr-2"></i>过马路的安全守则
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="mr-3 text-primary-500 dark:text-primary-300">
+                                <i class="fas fa-hand-paper text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">停</h4>
+                                <p class="text-sm text-primary-600 dark:text-primary-200">在马路边停下脚步</p>
+                            </div>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="mr-3 text-primary-500 dark:text-primary-300">
+                                <i class="fas fa-eye text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">看</h4>
+                                <p class="text-sm text-primary-600 dark:text-primary-200">左右环顾确认安全</p>
+                            </div>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm flex items-center">
+                            <div class="mr-3 text-primary-500 dark:text-primary-300">
+                                <i class="fas fa-walking text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">行</h4>
+                                <p class="text-sm text-primary-600 dark:text-primary-200">确认安全后快步通过</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-primary-50 dark:bg-primary-800 p-5 rounded-lg shadow-sm mb-6 border-l-4 border-primary-500">
+                    <div class="flex items-center">
+                        <div class="mr-4 text-primary-600 dark:text-primary-300">
+                            <i class="fas fa-lightbulb text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium mb-1 text-primary-700 dark:text-primary-200">记住这个重要口诀</h3>
+                            <p class="font-handwriting text-lg text-primary-800 dark:text-primary-100">
+                                红灯停，绿灯行。先停步，左右看，再看左，确认安全才通过。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-primary-800 p-5 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-primary-700 dark:text-primary-200">
+                        <i class="fas fa-car-side mr-2"></i>乘车安全
+                    </h3>
+                    <div class="flex flex-col md:flex-row md:items-center">
+                        <div class="md:w-1/2 mb-4 md:mb-0">
+                            <div class="bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-3">
+                                    <i class="fas fa-car text-2xl mr-3 text-primary-500 dark:text-primary-300"></i>
+                                    <h4 class="font-medium text-primary-700 dark:text-primary-200">乘坐汽车时</h4>
+                                </div>
+                                <p class="text-primary-600 dark:text-primary-200">安全带就像忠实的守护者，无论行程远近，都应系好它。</p>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 md:pl-4">
+                            <div class="bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-3">
+                                    <i class="fas fa-bicycle text-2xl mr-3 text-primary-500 dark:text-primary-300"></i>
+                                    <h4 class="font-medium text-primary-700 dark:text-primary-200">骑自行车时</h4>
+                                </div>
+                                <p class="text-primary-600 dark:text-primary-200">请记得佩戴头盔，它是你头部的保护伞，能在意外发生时减轻伤害。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 火灾安全幻灯片 -->
+        <div id="slide-3" class="presentation-slide flex flex-col items-center justify-center">
+            <div class="max-w-4xl mx-auto w-full slide">
+                <div class="flex flex-col md:flex-row md:items-center mb-8">
+                    <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
+                        <div class="relative">
+                            <div class="h-40 w-40 bg-secondary-100 dark:bg-secondary-800 rounded-full flex items-center justify-center">
+                                <i class="fas fa-fire-extinguisher text-6xl text-secondary-600 dark:text-secondary-300 floating"></i>
+                            </div>
+                            <div class="absolute -top-2 -right-2">
+                                <div class="h-8 w-8 bg-secondary-500 dark:bg-secondary-300 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-exclamation text-white dark:text-secondary-900"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h2 class="text-3xl font-display font-bold mb-3 text-secondary-700 dark:text-secondary-300">火灾安全</h2>
+                        <p class="text-sm italic mb-3 text-secondary-600 dark:text-secondary-400">—— 马馨悦</p>
+                        <p class="mb-4 text-secondary-800 dark:text-secondary-100">
+                            火灾是一种可怕却可预防的灾害，了解防火知识至关重要。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-secondary-900 p-6 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-secondary-700 dark:text-secondary-300">
+                        <i class="fas fa-fire mr-2"></i>预防胜于救灾
+                    </h3>
+                    <div class="bg-white dark:bg-secondary-800 p-4 rounded-lg shadow-sm mb-4">
+                        <div class="flex items-start">
+                            <div class="mr-3 mt-1 text-secondary-500 dark:text-secondary-300">
+                                <i class="fas fa-ban text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-secondary-700 dark:text-secondary-200">火柴和打火机不是玩具</h4>
+                                <p class="text-secondary-600 dark:text-secondary-300">
+                                    这类引火物品只需一瞬间就能引发大火。好奇心害死猫，发现这些物品切勿好奇尝试哦。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-secondary-900 p-6 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-secondary-700 dark:text-secondary-300">
+                        <i class="fas fa-door-open mr-2"></i>遇到火灾怎么办？
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="safety-card bg-white dark:bg-secondary-800 p-4 rounded-lg shadow-sm">
+                            <div class="flex items-start">
+                                <div class="mr-3 mt-1 text-secondary-500 dark:text-secondary-300">
+                                    <i class="fas fa-level-down-alt text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-secondary-700 dark:text-secondary-200">俯身或匍匐前进</h4>
+                                    <p class="text-sm text-secondary-600 dark:text-secondary-300">
+                                        热空气和烟雾会上升，保持头部贴近地面，那里的空气相对清新。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-secondary-800 p-4 rounded-lg shadow-sm">
+                            <div class="flex items-start">
+                                <div class="mr-3 mt-1 text-secondary-500 dark:text-secondary-300">
+                                    <i class="fas fa-running text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-secondary-700 dark:text-secondary-200">迅速沿安全通道离开</h4>
+                                    <p class="text-sm text-secondary-600 dark:text-secondary-300">
+                                        切勿乘坐电梯，绝不要返回室内取物。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-secondary-800 p-4 rounded-lg shadow-sm">
+                            <div class="flex items-start">
+                                <div class="mr-3 mt-1 text-secondary-500 dark:text-secondary-300">
+                                    <i class="fas fa-phone-alt text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-secondary-700 dark:text-secondary-200">拨打119火警电话</h4>
+                                    <p class="text-sm text-secondary-600 dark:text-secondary-300">
+                                        安全撤离后，立即求援。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-secondary-800 p-4 rounded-lg shadow-sm">
+                            <div class="flex items-start">
+                                <div class="mr-3 mt-1 text-secondary-500 dark:text-secondary-300">
+                                    <i class="fas fa-users text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-secondary-700 dark:text-secondary-200">制定家庭逃生计划</h4>
+                                    <p class="text-sm text-secondary-600 dark:text-secondary-300">
+                                        定期演练确保紧急时刻每个人都知道怎么做。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-secondary-50 dark:bg-secondary-900 p-5 rounded-lg shadow-sm border-l-4 border-secondary-500">
+                    <div class="flex items-center">
+                        <div class="mr-4 text-secondary-600 dark:text-secondary-300">
+                            <i class="fas fa-lightbulb text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium mb-1 text-secondary-700 dark:text-secondary-200">衣物着火记住"停、卧、滚"</h3>
+                            <p class="font-handwriting text-lg text-secondary-800 dark:text-secondary-100">
+                                立即停止移动，倒地平卧，来回翻滚压灭火苗。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 个人安全幻灯片 -->
+        <div id="slide-4" class="presentation-slide flex flex-col items-center justify-center">
+            <div class="max-w-4xl mx-auto w-full slide">
+                <div class="flex flex-col md:flex-row md:items-center mb-8">
+                    <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
+                        <div class="relative">
+                            <div class="h-40 w-40 bg-primary-100 dark:bg-primary-700 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-shield text-6xl text-primary-600 dark:text-primary-300 floating"></i>
+                            </div>
+                            <div class="absolute -top-2 -right-2">
+                                <div class="h-8 w-8 bg-primary-500 dark:bg-primary-300 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-lock text-white dark:text-primary-900"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h2 class="text-3xl font-display font-bold mb-3 text-primary-700 dark:text-primary-200">个人安全</h2>
+                        <p class="text-sm italic mb-3 text-secondary-600 dark:text-secondary-300">—— 马馨悦</p>
+                        <p class="mb-4 text-primary-800 dark:text-primary-100">
+                            保护自己的安全，面对陌生人时要格外警惕。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-primary-800 p-6 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-primary-700 dark:text-primary-200">
+                        <i class="fas fa-user-secret mr-2"></i>面对陌生人
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-comment-slash text-3xl text-primary-500 dark:text-primary-300"></i>
+                            </div>
+                            <p class="text-center text-primary-600 dark:text-primary-200">
+                                不与陌生人交谈
+                            </p>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-gift-card text-3xl text-primary-500 dark:text-primary-300"></i>
+                            </div>
+                            <p class="text-center text-primary-600 dark:text-primary-200">
+                                不接受陌生人的食物或礼物
+                            </p>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-walking text-3xl text-primary-500 dark:text-primary-300"></i>
+                            </div>
+                            <p class="text-center text-primary-600 dark:text-primary-200">
+                                不跟随陌生人离开
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-primary-50 dark:bg-primary-800 p-5 rounded-lg shadow-sm mb-6 border-l-4 border-primary-500">
+                    <div class="flex items-center">
+                        <div class="mr-4 text-primary-600 dark:text-primary-300">
+                            <i class="fas fa-volume-up text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium mb-1 text-primary-700 dark:text-primary-200">学会说"不"</h3>
+                            <p class="text-primary-800 dark:text-primary-100">
+                                当陌生人试图靠近或邀请你时，勇敢地说"不"，并立即寻找老师、家长或可信赖的成年人帮助。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-primary-800 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-primary-700 dark:text-primary-200">
+                        <i class="fas fa-map-marked-alt mr-2"></i>走散或迷路怎么办？
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                            <div class="flex items-start">
+                                <div class="mr-3 mt-1 text-primary-500 dark:text-primary-300">
+                                    <i class="fas fa-map-pin text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-primary-700 dark:text-primary-200">留在原地不动</h4>
+                                    <p class="text-sm text-primary-600 dark:text-primary-200">
+                                        这样家人会原路返回寻找你。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                            <div class="flex items-start">
+                                <div class="mr-3 mt-1 text-primary-500 dark:text-primary-300">
+                                    <i class="fas fa-id-badge text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-primary-700 dark:text-primary-200">寻求工作人员帮助</h4>
+                                    <p class="text-sm text-primary-600 dark:text-primary-200">
+                                        寻求警察、商店老板或佩戴工作证的人员协助。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-primary-50 dark:bg-primary-700 p-3 rounded-lg">
+                        <p class="text-center font-medium text-primary-700 dark:text-primary-200">
+                            记住爸爸妈妈的联系方式很重要哦！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 互联网安全幻灯片 -->
+        <div id="slide-5" class="presentation-slide flex flex-col items-center justify-center">
+            <div class="max-w-4xl mx-auto w-full slide">
+                <div class="flex flex-col md:flex-row md:items-center mb-8">
+                    <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
+                        <div class="relative">
+                            <div class="h-40 w-40 bg-secondary-100 dark:bg-secondary-800 rounded-full flex items-center justify-center">
+                                <i class="fas fa-laptop-code text-6xl text-secondary-600 dark:text-secondary-300 floating"></i>
+                            </div>
+                            <div class="absolute -top-2 -right-2">
+                                <div class="h-8 w-8 bg-secondary-500 dark:bg-secondary-300 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-wifi text-white dark:text-secondary-900"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h2 class="text-3xl font-display font-bold mb-3 text-secondary-700 dark:text-secondary-300">互联网安全</h2>
+                        <p class="text-sm italic mb-3 text-secondary-600 dark:text-secondary-400">—— 程禹豪</p>
+                        <p class="mb-4 text-secondary-800 dark:text-secondary-100">
+                            在数字化时代，互联网已成为我们学习和娱乐的重要平台，但网络空间也隐藏着风险。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-secondary-900 p-6 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-secondary-700 dark:text-secondary-300">
+                        <i class="fas fa-lock mr-2"></i>保护个人信息
+                    </h3>
+                    <div class="bg-white dark:bg-secondary-800 p-4 rounded-lg shadow-sm mb-4">
+                        <div class="flex items-start">
+                            <div class="mr-3 mt-1 text-secondary-500 dark:text-secondary-300">
+                                <i class="fas fa-shield-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-secondary-700 dark:text-secondary-200">切勿透露个人隐私</h4>
+                                <p class="text-secondary-600 dark:text-secondary-300">
+                                    不要在网上透露你的全名、家庭住址、学校名称、电话号码等隐私信息，即使对方看起来很友好。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-secondary-900 p-6 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-secondary-700 dark:text-secondary-300">
+                        <i class="fas fa-users mr-2"></i>网络交友需谨慎
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="safety-card bg-white dark:bg-secondary-800 p-4 rounded-lg shadow-sm">
+                            <div class="flex items-start">
+                                <div class="mr-3 mt-1 text-secondary-500 dark:text-secondary-300">
+                                    <i class="fas fa-user-secret text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-secondary-700 dark:text-secondary-200">线上身份可能与现实不符</h4>
+                                    <p class="text-sm text-secondary-600 dark:text-secondary-300">
+                                        有些账号可能是自动程序或别有用心的人创建的。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-secondary-800 p-4 rounded-lg shadow-sm">
+                            <div class="flex items-start">
+                                <div class="mr-3 mt-1 text-secondary-500 dark:text-secondary-300">
+                                    <i class="fas fa-ban text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-secondary-700 dark:text-secondary-200">感到不适时立即终止交流</h4>
+                                    <p class="text-sm text-secondary-600 dark:text-secondary-300">
+                                        如有人让你不舒服，请告知父母或老师。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-secondary-50 dark:bg-secondary-900 p-5 rounded-lg shadow-sm border-l-4 border-secondary-500">
+                    <div class="flex items-center">
+                        <div class="mr-4 text-secondary-600 dark:text-secondary-300">
+                            <i class="fas fa-hourglass-half text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium mb-1 text-secondary-700 dark:text-secondary-200">控制上网时间</h3>
+                            <p class="text-secondary-800 dark:text-secondary-100">
+                                避免过度沉迷网络影响学习和视力健康。如果看到令人困惑的内容，告诉父母或老师寻求帮助。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 基本急救幻灯片 -->
+        <div id="slide-6" class="presentation-slide flex flex-col items-center justify-center">
+            <div class="max-w-4xl mx-auto w-full slide">
+                <div class="flex flex-col md:flex-row md:items-center mb-8">
+                    <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
+                        <div class="relative">
+                            <div class="h-40 w-40 bg-primary-100 dark:bg-primary-700 rounded-full flex items-center justify-center">
+                                <i class="fas fa-first-aid text-6xl text-primary-600 dark:text-primary-300 floating"></i>
+                            </div>
+                            <div class="absolute -top-2 -right-2">
+                                <div class="h-8 w-8 bg-red-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-heartbeat text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h2 class="text-3xl font-display font-bold mb-3 text-primary-700 dark:text-primary-200">基本急救知识</h2>
+                        <p class="text-sm italic mb-3 text-secondary-600 dark:text-secondary-300">—— 程禹豪</p>
+                        <p class="mb-4 text-primary-800 dark:text-primary-100">
+                            学习一些基本的急救知识，这些技能在紧急情况下可能挽救生命。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-primary-800 p-6 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-primary-700 dark:text-primary-200">
+                        <i class="fas fa-cut mr-2"></i>手指被划伤
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-hand-holding-water text-3xl text-primary-500 dark:text-primary-300"></i>
+                            </div>
+                            <div class="text-center">
+                                <span class="bg-primary-100 dark:bg-primary-600 text-primary-800 dark:text-primary-100 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">步骤 1</span>
+                            </div>
+                            <p class="text-center mt-2 text-primary-600 dark:text-primary-200">
+                                用流动的清水冲洗伤口20秒
+                            </p>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-hand-paper text-3xl text-primary-500 dark:text-primary-300"></i>
+                            </div>
+                            <div class="text-center">
+                                <span class="bg-primary-100 dark:bg-primary-600 text-primary-800 dark:text-primary-100 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">步骤 2</span>
+                            </div>
+                            <p class="text-center mt-2 text-primary-600 dark:text-primary-200">
+                                轻轻按压止血
+                            </p>
+                        </div>
+                        <div class="safety-card bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-band-aid text-3xl text-primary-500 dark:text-primary-300"></i>
+                            </div>
+                            <div class="text-center">
+                                <span class="bg-primary-100 dark:bg-primary-600 text-primary-800 dark:text-primary-100 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">步骤 3</span>
+                            </div>
+                            <p class="text-center mt-2 text-primary-600 dark:text-primary-200">
+                                贴上创可贴保护伤口
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-primary-800 p-6 rounded-lg shadow-sm mb-6">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-primary-700 dark:text-primary-200">
+                        <i class="fas fa-fire mr-2"></i>轻微烫伤
+                    </h3>
+                    <div class="bg-white dark:bg-primary-700 p-4 rounded-lg shadow-sm">
+                        <div class="flex items-start">
+                            <div class="mr-3 mt-1 text-primary-500 dark:text-primary-300">
+                                <i class="fas fa-tint text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-primary-700 dark:text-primary-200">冷水冲洗</h4>
+                                <p class="text-primary-600 dark:text-primary-200">
+                                    立即用冷水冲洗伤处10-15分钟可减轻疼痛和肿胀。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-red-50 dark:bg-red-900 p-3 rounded-lg border-l-4 border-red-500">
+                        <div class="flex items-center">
+                            <div class="mr-3 text-red-500 dark:text-red-300">
+                                <i class="fas fa-exclamation-circle text-xl"></i>
+                            </div>
+                            <p class="text-red-700 dark:text-red-200">
+                                绝不要使用牙膏、酱油等民间偏方，这可能加重感染风险。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-primary-50 dark:bg-primary-800 p-5 rounded-lg shadow-sm border-l-4 border-primary-500">
+                    <div class="flex items-center">
+                        <div class="mr-4 text-primary-600 dark:text-primary-300">
+                            <i class="fas fa-phone-alt text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium mb-1 text-primary-700 dark:text-primary-200">紧急情况</h3>
+                            <p class="text-primary-800 dark:text-primary-100">
+                                遇到超出自己能力范围的紧急情况，最重要的是迅速寻求成人帮助，或拨打120急救电话。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结尾幻灯片 -->
+        <div id="slide-7" class="presentation-slide flex flex-col items-center justify-center">
+            <div class="max-w-4xl mx-auto w-full slide">
+                <div class="text-center mb-8">
+                    <i class="fas fa-shield-alt text-5xl text-primary-500 dark:text-primary-300 mb-4"></i>
+                    <h2 class="text-3xl font-display font-bold mb-3 text-primary-700 dark:text-primary-200">安全知识总结</h2>
+                    <p class="text-sm italic mb-3 text-secondary-600 dark:text-secondary-300">—— 范世诚</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="safety-card bg-neutral-100 dark:bg-primary-800 p-4 rounded-lg shadow-sm">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-traffic-light text-3xl text-primary-500 dark:text-primary-300"></i>
+                        </div>
+                        <h3 class="font-medium text-center text-primary-700 dark:text-primary-200 mb-2">交通安全</h3>
+                        <p class="text-sm text-center text-primary-600 dark:text-primary-300">
+                            红灯停，绿灯行；过马路时停、看、行
+                        </p>
+                    </div>
+                    <div class="safety-card bg-neutral-100 dark:bg-primary-800 p-4 rounded-lg shadow-sm">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-fire-extinguisher text-3xl text-secondary-500 dark:text-secondary-300"></i>
+                        </div>
+                        <h3 class="font-medium text-center text-primary-700 dark:text-primary-200 mb-2">火灾安全</h3>
+                        <p class="text-sm text-center text-primary-600 dark:text-primary-300">
+                            预防为主；遇险保持低姿态；拨打119
+                        </p>
+                    </div>
+                    <div class="safety-card bg-neutral-100 dark:bg-primary-800 p-4 rounded-lg shadow-sm">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-user-shield text-3xl text-primary-500 dark:text-primary-300"></i>
+                        </div>
+                        <h3 class="font-medium text-center text-primary-700 dark:text-primary-200 mb-2">个人安全</h3>
+                        <p class="text-sm text-center text-primary-600 dark:text-primary-300">
+                            陌生人勇敢说不；记住联系方式
+                        </p>
+                    </div>
+                    <div class="safety-card bg-neutral-100 dark:bg-primary-800 p-4 rounded-lg shadow-sm">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-laptop-medical text-3xl text-secondary-500 dark:text-secondary-300"></i>
+                        </div>
+                        <h3 class="font-medium text-center text-primary-700 dark:text-primary-200 mb-2">急救知识</h3>
+                        <p class="text-sm text-center text-primary-600 dark:text-primary-300">
+                            小伤口清水冲洗；紧急情况寻求帮助
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-primary-50 dark:bg-primary-800 p-6 rounded-lg shadow-sm mb-6 text-center">
+                    <h3 class="text-xl font-display font-semibold mb-4 text-primary-700 dark:text-primary-200">
+                        安全口诀
+                    </h3>
+                    <p class="font-handwriting text-2xl text-primary-800 dark:text-primary-100 mb-4">
+                        "停看听，报警急，陌生拒，网络密，伤口清"
+                    </p>
+                    <p class="text-primary-600 dark:text-primary-300">
+                        这十五个字涵盖了我们今天学习的核心安全原则。
+                    </p>
+                </div>
+                
+                <div class="bg-neutral-100 dark:bg-primary-800 p-6 rounded-lg shadow-sm">
+                    <div class="flex flex-col items-center">
+                        <i class="fas fa-heart text-3xl text-red-500 mb-3"></i>
+                        <h3 class="text-xl font-medium text-center text-primary-700 dark:text-primary-200 mb-3">
+                            安全不只关乎个人，也是我们共同的责任
+                        </h3>
+                        <p class="text-center text-primary-600 dark:text-primary-300 mb-4">
+                            从今天起，让我们一起承诺：不仅保护自己的安全，也关注身边亲友的安全，成为安全知识的传播者和践行者。
+                        </p>
+                        <p class="font-display font-semibold text-center text-primary-700 dark:text-primary-200">
+                            谢谢大家的认真聆听！祝愿每一位同学平安健康！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-neutral-100 dark:bg-primary-800 py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-primary-700 dark:text-primary-200">
+                作者: <span class="font-medium">范文昕</span>
+            </p>
+            <p class="text-sm text-primary-600 dark:text-primary-300">
+                © 2025 版权所有
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/preline/1.9.0/preline.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化变量
+            const slides = document.querySelectorAll('.presentation-slide');
+            const totalSlides = slides.length;
+            const prevButton = document.getElementById('prev-slide');
+            const nextButton = document.getElementById('next-slide');
+            const currentSlideDisplay = document.getElementById('current-slide');
+            const totalSlidesDisplay = document.getElementById('total-slides');
+            let currentSlideIndex = 0;
+            
+            // 设置总幻灯片数量
+            totalSlidesDisplay.textContent = totalSlides;
+            
+            // 主题切换
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            // 检查系统偏好
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // 幻灯片导航功能
+            function updateSlideVisibility() {
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('active');
+                    if (index === currentSlideIndex) {
+                        slide.classList.add('active');
+                        
+                        // 添加动画效果
+                        const slideContent = slide.querySelector('.slide');
+                        if (slideContent) {
+                            slideContent.classList.remove('active');
+                            setTimeout(() => {
+                                slideContent.classList.add('active');
+                            }, 10);
+                        }
+                    }
+                });
+                
+                // 更新显示的幻灯片编号
+                currentSlideDisplay.textContent = currentSlideIndex + 1;
+                
+                // 禁用/启用按钮
+                prevButton.disabled = currentSlideIndex === 0;
+                nextButton.disabled = currentSlideIndex === totalSlides - 1;
+                
+                // 更改按钮样式
+                if (prevButton.disabled) {
+                    prevButton.classList.add('opacity-50', 'cursor-not-allowed');
+                } else {
+                    prevButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+                
+                if (nextButton.disabled) {
+                    nextButton.classList.add('opacity-50', 'cursor-not-allowed');
+                } else {
+                    nextButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }
+            
+            prevButton.addEventListener('click', function() {
+                if (currentSlideIndex > 0) {
+                    currentSlideIndex--;
+                    updateSlideVisibility();
+                }
+            });
+            
+            nextButton.addEventListener('click', function() {
+                if (currentSlideIndex < totalSlides - 1) {
+                    currentSlideIndex++;
+                    updateSlideVisibility();
+                }
+            });
+            
+            // 键盘快捷键
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    prevButton.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextButton.click();
+                }
+            });
+            
+            // 初始化幻灯片显示
+            updateSlideVisibility();
+            
+            // 添加滑动手势支持
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            document.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            document.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const threshold = 75; // 最小滑动距离
+                if (touchEndX < touchStartX - threshold) {
+                    // 向左滑动
+                    nextButton.click();
+                } else if (touchEndX > touchStartX + threshold) {
+                    // 向右滑动
+                    prevButton.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
